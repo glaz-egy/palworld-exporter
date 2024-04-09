@@ -1,0 +1,8 @@
+.vscode
+.env
+.git
+.gitignore
+node_modules
+build
+README.md
+resources

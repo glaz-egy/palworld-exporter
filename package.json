@@ -1,0 +1,27 @@
+{
+    "name": "palworld-exporter",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "build": "tsx script/build.ts",
+        "start": "node ./build/server.js",
+        "test": "node --env-file=.env ./build/server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^20.12.5",
+        "esbuild": "^0.20.2",
+        "eslint": "^8.57.0",
+        "prettier": "^3.2.5",
+        "tsx": "^3.14.0",
+        "typescript": "^5.4.4"
+    },
+    "dependencies": {
+        "fastify": "^4.26.2",
+        "prom-client": "^15.1.1"
+    }
+}
