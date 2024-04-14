@@ -7,9 +7,15 @@ An implementation of a Prometheus exporter for Palworld.
 - Docker 24.0.5
 
 ## Usage
+Environmental variables.
 ```
-# docker build -t palworld_exporter .
-# docker run -e SERVER_RESTAPI_ADDRESS=<your palworld server address> -e SERVER_RESTAPI_PORT=<your palworld server rest-api port> -e USERNAME=admin -e PASSWORD=<server admin password> -d --name palworld_exporter -p 9500:9500 --network=bridge palworld_exporter
+SERVER_RESTAPI_ADDRESS: Your palworld server address(Required)
+SERVER_RESTAPI_PORT:    Your palworld server REST API port number(Required)
+PASSWORD:               Your palworld server admin password(Required)
+EXPORTER_PORT:          This exporter port(Default is 9500)
+```
+```
+# docker run -e SERVER_RESTAPI_ADDRESS=<your palworld server address> -e SERVER_RESTAPI_PORT=<your palworld server rest-api port> -e USERNAME=admin -e PASSWORD=<server admin password> -e EXPORTER_PORT=<exporter port> -d --name palworld_exporter -p <exporter port>:<exporter port> --network=bridge glazegy/palworld_exporter
 ```
 Then get the value in Prometheus.
 
