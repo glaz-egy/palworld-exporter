@@ -13,16 +13,16 @@
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "@types/node": "^20.12.5",
+        "@types/node": "^20.19.27",
         "esbuild": "^0.20.2",
-        "eslint": "^8.57.0",
-        "prettier": "^3.2.5",
+        "eslint": "^8.57.1",
+        "prettier": "^3.7.4",
         "tsx": "^3.14.0",
-        "typescript": "^5.4.4"
+        "typescript": "^5.9.3"
     },
     "dependencies": {
-        "fastify": "^4.26.2",
-        "pino-pretty": "^11.0.0",
-        "prom-client": "^15.1.1"
+        "fastify": "^4.29.1",
+        "pino-pretty": "^11.3.0",
+        "prom-client": "^15.1.3"
     }
 }

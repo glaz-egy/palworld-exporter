@@ -5,18 +5,23 @@ const BASE_URL = `http://${process.env.SERVER_RESTAPI_ADDRESS}:${process.env.SER
 
 async function fetchAPI(endpoint: string) {
     log(`[${new Date().toISOString()}] Connecting to ${endpoint}`);
-
-    const headers = generateHeader();
-    const response = await fetch(endpoint, { headers: headers })
-    const json = await response.json();
-
-    return json;
+    try{
+        const headers = generateHeader();
+        log(`[${new Date().toISOString()}] ${headers.Authorization}`);
+        const response = await fetch(endpoint, { headers: headers })
+        const json = await response.json();
+        return json;
+    }catch(e){
+        log(`[${new Date().toISOString()}] ${e}`);
+    }
+    
 }
 
 export interface Info {
     version: string;
     servername: string;
     description: string;
+    worldguid: string;
 }
 
 export interface Player {
@@ -36,20 +41,7 @@ export interface Metrics {
     serverframetime: number;
     maxplayernum: number;
     uptime: number;
-}
-
-export interface Hub {
-    temperature: number;
-    humidity: number;
-    lightLevel: number;
-}
-
-export interface Plug {
-    power: "on" | "off";
-    voltage: number;
-    weight: number;
-    electricityOfDay: number;
-    electricCurrent: number;
+    days: number;
 }
 
 export async function getServerInfo() {

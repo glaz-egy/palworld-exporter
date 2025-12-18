@@ -4,32 +4,38 @@ import { Info, Metrics, Player, getServerInfo, getServerMetrics, getPlayer } fro
 const currentplayernum = new Gauge({
     name: "palworld_server_current_player_num",
     help: "The number of current players",
-    labelNames: ["version", "servername", "description"],
+    labelNames: ["version", "servername", "description", "worldguid"],
 });
 
 const serverfps = new Gauge({
     name: "palworld_server_fps",
     help: "The server FPS",
-    labelNames: ["version", "servername", "description"],
+    labelNames: ["version", "servername", "description", "worldguid"],
 });
 
 const serverframetime = new Gauge({
     name: "palworld_server_frame_time",
     help: "Server frame time (ms)",
-    labelNames: ["version", "servername", "description"],
+    labelNames: ["version", "servername", "description", "worldguid"],
 });
 
 const maxplayernum = new Gauge({
     name: "palworld_server_maxplayer",
     help: "The maximum number of players",
-    labelNames: ["version", "servername", "description"],
+    labelNames: ["version", "servername", "description", "worldguid"],
 });
 
 const uptime = new Gauge({
     name: "palworld_server_uptime",
     help: "The server uptime of seconds",
-    labelNames: ["version", "servername", "description"],
+    labelNames: ["version", "servername", "description", "worldguid"],
 });
+
+const days = new Gauge({
+    name: "palworld_server_days",
+    help: "The server days of in-game",
+    labelNames: ["version", "servername", "description", "worldguid"],
+})
 
 const player_ping = new Gauge({
     name: "palworld_player_ping",
@@ -66,32 +72,44 @@ export async function getMetrics() {
     currentplayernum.set({
         "version": serverInfo.version,
         "servername": serverInfo.servername,
-        "description": serverInfo.description
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
     }, serverMetrics.currentplayernum);
 
     serverfps.set({
         "version": serverInfo.version,
         "servername": serverInfo.servername,
-        "description": serverInfo.description
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
     }, serverMetrics.serverfps);
 
     serverframetime.set({
         "version": serverInfo.version,
         "servername": serverInfo.servername,
-        "description": serverInfo.description
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
     }, serverMetrics.serverframetime);
 
     maxplayernum.set({
         "version": serverInfo.version,
         "servername": serverInfo.servername,
-        "description": serverInfo.description
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
     }, serverMetrics.maxplayernum);
 
     uptime.set({
         "version": serverInfo.version,
         "servername": serverInfo.servername,
-        "description": serverInfo.description
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
     }, serverMetrics.uptime);
+
+    days.set({
+        "version": serverInfo.version,
+        "servername": serverInfo.servername,
+        "description": serverInfo.description,
+        "worldguid": serverInfo.worldguid
+    }, serverMetrics.days);
 
     //Player Status
     if(serverMetrics.currentplayernum > 0){
