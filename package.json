@@ -21,7 +21,7 @@
         "typescript": "^5.9.3"
     },
     "dependencies": {
-        "fastify": "^4.29.1",
+        "fastify": "^5.7.3",
         "pino-pretty": "^11.3.0",
         "prom-client": "^15.1.3"
     }
