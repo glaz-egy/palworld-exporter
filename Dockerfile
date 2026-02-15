@@ -1,4 +1,4 @@
-FROM node:24.12-slim as base
+FROM node:24.13.1-slim as base
 
 LABEL version="1.0"
 LABEL maintainer="fukumoto.a@3s-labo.net"
